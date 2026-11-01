@@ -4,9 +4,9 @@ import { PROFILE } from '../data/portfolio';
 
 <footer
   id="kontak"
-  class="relative isolate pt-10 sm:pt-14 pb-14 overflow-hidden"
+  class="relative z-10 isolate pt-10 sm:pt-14 pb-14 overflow-hidden"
 >
-  <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 -z-10">
+  <div aria-hidden="true" class="pointer-events-none absolute -inset-x-[6%] bottom-0 -z-10">
     <svg
       viewBox="0 0 1440 360"
       fill="none"
@@ -29,33 +29,37 @@ import { PROFILE } from '../data/portfolio';
         </linearGradient>
       </defs>
 
-      <path
-        d="M0 112 C 320 68, 680 158, 1080 98 C 1240 78, 1360 94, 1440 108 L 1440 360 L 0 360 Z"
-        fill="url(#ecoWaterBand)"
-      />
-      <path
-        d="M0 176 C 290 110, 620 222, 980 148 C 1190 110, 1330 132, 1440 154 L 1440 360 L 0 360 Z"
-        fill="url(#ecoMeadowBack)"
-      />
+      <g class="aero-water-wave">
+        <path
+          d="M0 112 C 320 68, 680 158, 1080 98 C 1240 78, 1360 94, 1440 108 L 1440 360 L 0 360 Z"
+          fill="url(#ecoWaterBand)"
+        />
+        <path
+          d="M0 112 C 320 68, 680 158, 1080 98 C 1240 78, 1360 94, 1440 108"
+          stroke="#FFFFFF"
+          stroke-opacity="0.9"
+          stroke-width="2.2"
+        />
+      </g>
+      <g class="aero-water-wave-slow">
+        <path
+          d="M0 176 C 290 110, 620 222, 980 148 C 1190 110, 1330 132, 1440 154 L 1440 360 L 0 360 Z"
+          fill="url(#ecoMeadowBack)"
+        />
+        <path
+          d="M0 176 C 290 110, 620 222, 980 148 C 1190 110, 1330 132, 1440 154"
+          stroke="#FFFFFF"
+          stroke-opacity="0.88"
+          stroke-width="2"
+        />
+      </g>
       <path
         d="M0 226 C 380 168, 820 250, 1440 184 L 1440 360 L 0 360 Z"
         fill="url(#ecoMeadowFront)"
       />
-      <path
-        d="M0 112 C 320 68, 680 158, 1080 98 C 1240 78, 1360 94, 1440 108"
-        stroke="#FFFFFF"
-        stroke-opacity="0.9"
-        stroke-width="2.2"
-      />
-      <path
-        d="M0 176 C 290 110, 620 222, 980 148 C 1190 110, 1330 132, 1440 154"
-        stroke="#FFFFFF"
-        stroke-opacity="0.88"
-        stroke-width="2"
-      />
     </svg>
 
-    <div class="orb-dew hidden md:block absolute bottom-20 right-[8%] w-12 h-12 opacity-80"></div>
+    <div class="orb-dew aero-orb-bob-slow hidden md:block absolute bottom-20 right-[12%] w-12 h-12 opacity-80"></div>
   </div>
 
   <div class="max-w-5xl mx-auto px-5 space-y-6">

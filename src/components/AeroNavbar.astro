@@ -50,7 +50,16 @@ const navItems = [
         }
       </ul>
 
-      <div class="pl-2">
+      <div class="pl-1.5 flex items-center gap-2">
+        <button
+          type="button"
+          data-toggle-aero-motion
+          aria-pressed="false"
+          class="gel-btn gel-btn-pearl !min-h-[44px] !py-1.5 !px-3.5 !text-[0.82rem]"
+        >
+          <span data-aero-motion-label>Jeda Latar</span>
+        </button>
+
         <a
           href={PROFILE.githubUrl}
           target="_blank"
@@ -122,7 +131,16 @@ const navItems = [
       }
     </ul>
 
-    <div class="pt-2">
+    <div class="pt-2 space-y-2">
+      <button
+        type="button"
+        data-toggle-aero-motion
+        aria-pressed="false"
+        class="w-full gel-btn gel-btn-pearl"
+      >
+        <span data-aero-motion-label>Jeda Latar</span>
+      </button>
+
       <a
         href={PROFILE.githubUrl}
         target="_blank"
@@ -163,4 +181,22 @@ const navItems = [
       });
     }
   }
+
+  const motionButtons = document.querySelectorAll<HTMLButtonElement>('[data-toggle-aero-motion]');
+  motionButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextPaused = document.documentElement.dataset.aeroMotion !== 'paused';
+      if (nextPaused) {
+        document.documentElement.dataset.aeroMotion = 'paused';
+      } else {
+        delete document.documentElement.dataset.aeroMotion;
+      }
+
+      motionButtons.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(nextPaused));
+        const label = btn.querySelector('[data-aero-motion-label]');
+        if (label) label.textContent = nextPaused ? 'Putar Latar' : 'Jeda Latar';
+      });
+    });
+  });
 </script>

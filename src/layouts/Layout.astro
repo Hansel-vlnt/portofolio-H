@@ -7,6 +7,17 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const bubbles = [
+  { left: '6%', size: 54, dur: '16s', delay: '-3s' },
+  { left: '17%', size: 26, dur: '13s', delay: '-8s' },
+  { left: '31%', size: 38, dur: '19s', delay: '-12s' },
+  { left: '48%', size: 22, dur: '14s', delay: '-5s' },
+  { left: '64%', size: 60, dur: '21s', delay: '-10s' },
+  { left: '78%', size: 32, dur: '15s', delay: '-2s' },
+  { left: '89%', size: 46, dur: '18s', delay: '-14s' },
+  { left: '94%', size: 20, dur: '12s', delay: '-6s' },
+];
 ---
 
 <!doctype html>
@@ -35,6 +46,59 @@ const { title, description } = Astro.props;
     >
       Loncat ke konten utama
     </a>
+
+    <div aria-hidden="true" class="aero-ambient-stage">
+      <div class="aero-parallax-wrap absolute -inset-x-[8%] -inset-y-[10%]">
+        <svg
+          viewBox="0 0 1440 960"
+          fill="none"
+          preserveAspectRatio="none"
+          class="w-full h-full"
+        >
+          <defs>
+            <linearGradient id="ambientRibbonCyan" x1="0%" y1="20%" x2="100%" y2="75%">
+              <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.34" />
+              <stop offset="52%" stop-color="#FFFFFF" stop-opacity="0.72" />
+              <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.34" />
+            </linearGradient>
+            <linearGradient id="ambientRibbonEco" x1="100%" y1="10%" x2="0%" y2="85%">
+              <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.24" />
+              <stop offset="50%" stop-color="#BAE6FD" stop-opacity="0.52" />
+              <stop offset="100%" stop-color="#86EFAC" stop-opacity="0.32" />
+            </linearGradient>
+          </defs>
+
+          <g class="aero-silk-a">
+            <path
+              d="M-140 520 C 260 330, 660 670, 1120 410 C 1310 315, 1460 360, 1600 335 L 1600 570 C 1310 610, 960 440, 580 650 C 260 800, 30 680, -140 650 Z"
+              fill="url(#ambientRibbonCyan)"
+            />
+            <path
+              d="M-140 520 C 260 330, 660 670, 1120 410 C 1310 315, 1460 360, 1600 335"
+              stroke="#FFFFFF"
+              stroke-opacity="0.82"
+              stroke-width="2"
+            />
+          </g>
+
+          <g class="aero-silk-b">
+            <path
+              d="M-120 720 C 310 860, 760 540, 1210 730 C 1380 800, 1490 760, 1580 710 L 1580 830 C 1360 890, 1110 660, 670 830 C 320 960, 70 845, -120 805 Z"
+              fill="url(#ambientRibbonEco)"
+            />
+          </g>
+        </svg>
+      </div>
+
+      {
+        bubbles.map((b) => (
+          <div
+            class="orb-dew aero-bubble"
+            style={`left: ${b.left}; width: ${b.size}px; height: ${b.size}px; --dur: ${b.dur}; --delay: ${b.delay};`}
+          />
+        ))
+      }
+    </div>
 
     <slot />
 

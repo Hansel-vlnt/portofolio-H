@@ -37,26 +37,32 @@ import { PROFILE } from '../data/portfolio';
 
       <rect width="1440" height="720" fill="url(#sunZenith)" />
 
-      <path
-        d="M-120 340 C 260 100, 620 430, 1060 165 C 1250 68, 1410 115, 1560 80 L 1560 390 C 1290 420, 990 240, 620 460 C 310 620, 60 500, -120 470 Z"
-        fill="url(#auroraSilkA)"
-      />
-      <path
-        d="M-80 190 C 310 370, 740 25, 1180 235 C 1340 310, 1460 260, 1540 210 L 1540 305 C 1340 370, 1120 110, 680 305 C 330 455, 80 325, -80 280 Z"
-        fill="url(#auroraSilkB)"
-      />
-      <path
-        d="M-100 338 C 265 104, 622 426, 1062 167 C 1250 70, 1410 117, 1560 83"
-        stroke="#FFFFFF"
-        stroke-opacity="0.95"
-        stroke-width="2.4"
-      />
-      <circle cx="1110" cy="116" r="92" stroke="#FFFFFF" stroke-opacity="0.7" stroke-width="1.6" />
-      <circle cx="1110" cy="116" r="152" stroke="#FFFFFF" stroke-opacity="0.42" stroke-width="1.2" />
+      <g class="aero-silk-a">
+        <path
+          d="M-120 340 C 260 100, 620 430, 1060 165 C 1250 68, 1410 115, 1560 80 L 1560 390 C 1290 420, 990 240, 620 460 C 310 620, 60 500, -120 470 Z"
+          fill="url(#auroraSilkA)"
+        />
+        <path
+          d="M-100 338 C 265 104, 622 426, 1062 167 C 1250 70, 1410 117, 1560 83"
+          stroke="#FFFFFF"
+          stroke-opacity="0.95"
+          stroke-width="2.4"
+        />
+      </g>
+      <g class="aero-silk-b">
+        <path
+          d="M-80 190 C 310 370, 740 25, 1180 235 C 1340 310, 1460 260, 1540 210 L 1540 305 C 1340 370, 1120 110, 680 305 C 330 455, 80 325, -80 280 Z"
+          fill="url(#auroraSilkB)"
+        />
+      </g>
+      <g class="aero-sun-pulse">
+        <circle cx="1110" cy="116" r="92" stroke="#FFFFFF" stroke-opacity="0.7" stroke-width="1.6" />
+        <circle cx="1110" cy="116" r="152" stroke="#FFFFFF" stroke-opacity="0.42" stroke-width="1.2" />
+      </g>
     </svg>
 
-    <div class="orb-dew hidden sm:block absolute top-24 right-[6%] w-22 h-22 opacity-90"></div>
-    <div class="orb-dew hidden md:block absolute bottom-6 left-[5%] w-14 h-14 opacity-85"></div>
+    <div class="orb-dew aero-orb-bob hidden sm:block absolute top-24 right-[6%] w-22 h-22 opacity-90"></div>
+    <div class="orb-dew aero-orb-bob-slow hidden md:block absolute bottom-6 left-[5%] w-14 h-14 opacity-85"></div>
   </div>
 
   <div class="max-w-5xl mx-auto px-5 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">

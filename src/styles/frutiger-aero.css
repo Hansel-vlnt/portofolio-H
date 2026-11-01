@@ -282,3 +282,171 @@ dialog.aero-dialog {
 dialog.aero-dialog::backdrop {
   background-color: rgba(9, 30, 54, 0.56);
 }
+
+/* Compositor-only ambient Frutiger Aero motion (translate, scale, opacity). */
+.aero-ambient-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.aero-bubble {
+  position: absolute;
+  bottom: -96px;
+  border-radius: 9999px;
+  will-change: translate, opacity;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes aero-silk-drift-a {
+    0% {
+      translate: -4% -1.5%;
+      scale: 1.06 1;
+    }
+    50% {
+      translate: 4% 2%;
+      scale: 1.1 1.07;
+    }
+    100% {
+      translate: -4% -1.5%;
+      scale: 1.06 1;
+    }
+  }
+
+  @keyframes aero-silk-drift-b {
+    0% {
+      translate: 4% 1.5%;
+      scale: 1.08 1.04;
+    }
+    50% {
+      translate: -4% -2%;
+      scale: 1.04 0.96;
+    }
+    100% {
+      translate: 4% 1.5%;
+      scale: 1.08 1.04;
+    }
+  }
+
+  @keyframes aero-orb-float {
+    0% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 8px -14px;
+    }
+    100% {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes aero-lens-pulse {
+    0%,
+    100% {
+      scale: 1;
+      opacity: 0.72;
+    }
+    50% {
+      scale: 1.08;
+      opacity: 0.96;
+    }
+  }
+
+  @keyframes aero-bubble-rise {
+    0% {
+      translate: 0 0;
+      scale: 0.88;
+      opacity: 0;
+    }
+    12% {
+      opacity: 0.82;
+    }
+    38% {
+      translate: 22px -38vh;
+      scale: 1;
+    }
+    70% {
+      translate: -18px -76vh;
+      scale: 1.05;
+      opacity: 0.78;
+    }
+    100% {
+      translate: 12px -118vh;
+      scale: 0.94;
+      opacity: 0;
+    }
+  }
+
+  @keyframes aero-water-ripple {
+    0%,
+    100% {
+      translate: -2.5% 0;
+    }
+    50% {
+      translate: 2.5% 5px;
+    }
+  }
+
+  .aero-silk-a {
+    transform-origin: center;
+    animation: aero-silk-drift-a 13s ease-in-out infinite;
+  }
+
+  .aero-silk-b {
+    transform-origin: center;
+    animation: aero-silk-drift-b 17s ease-in-out infinite;
+  }
+
+  .aero-orb-bob {
+    animation: aero-orb-float 6.5s ease-in-out infinite;
+  }
+
+  .aero-orb-bob-slow {
+    animation: aero-orb-float 8.5s ease-in-out -3s infinite;
+  }
+
+  .aero-sun-pulse {
+    transform-origin: 1110px 116px;
+    animation: aero-lens-pulse 9s ease-in-out infinite;
+  }
+
+  .aero-water-wave {
+    animation: aero-water-ripple 8s ease-in-out infinite;
+  }
+
+  .aero-water-wave-slow {
+    animation: aero-water-ripple 11s ease-in-out -4s infinite;
+  }
+
+  .aero-bubble {
+    animation: aero-bubble-rise var(--dur, 16s) linear var(--delay, 0s) infinite;
+  }
+
+  @supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+    @keyframes aero-scroll-glide {
+      to {
+        translate: 0 -84px;
+      }
+    }
+
+    .aero-parallax-wrap {
+      animation: aero-scroll-glide auto linear both;
+      animation-timeline: scroll(block root);
+      animation-range: 0% 100%;
+    }
+  }
+}
+
+html[data-aero-motion="paused"] .aero-silk-a,
+html[data-aero-motion="paused"] .aero-silk-b,
+html[data-aero-motion="paused"] .aero-orb-bob,
+html[data-aero-motion="paused"] .aero-orb-bob-slow,
+html[data-aero-motion="paused"] .aero-sun-pulse,
+html[data-aero-motion="paused"] .aero-water-wave,
+html[data-aero-motion="paused"] .aero-water-wave-slow,
+html[data-aero-motion="paused"] .aero-bubble {
+  animation-play-state: paused;
+}
