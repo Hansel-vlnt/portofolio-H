@@ -1,0 +1,166 @@
+---
+import { PROFILE } from '../data/portfolio';
+
+const navItems = [
+  { href: '#karya', label: 'Karya AI' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#kontak', label: 'Kontak' },
+];
+---
+
+<header class="aero-dock-header fixed top-0 inset-x-0 z-40">
+  <div
+    aria-hidden="true"
+    class="aero-dock-sheen pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-[#38BDF8] via-[#22C55E] to-[#38BDF8]"
+  ></div>
+
+  <nav
+    aria-label="Navigasi Utama"
+    class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between gap-4"
+  >
+    <a
+      href="#beranda"
+      class="inline-flex items-center gap-2.5 min-h-[46px] pr-2 rounded-lg"
+    >
+      <span
+        aria-hidden="true"
+        class="w-8 h-8 rounded-full shrink-0 flex items-center justify-center border border-[#3898EC] shadow-inner"
+        style="background: radial-gradient(circle at 30% 25%, #FFFFFF 0%, #7DD3FC 28%, #0284C7 70%, #035388 100%);"
+      >
+        <span class="text-white font-extrabold text-xs tracking-tight">HV</span>
+      </span>
+      <span class="font-extrabold text-[0.96rem] text-[#091E36] tracking-tight">
+        Hansel Valent
+      </span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-1">
+      <ul class="flex items-center gap-1" role="list">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="inline-flex items-center min-h-[44px] px-3.5 rounded-lg text-[0.9rem] font-bold text-[#091E36] hover:bg-white/85 hover:text-[#035388] transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="pl-2">
+        <a
+          href={PROFILE.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="gel-btn gel-btn-cobalt !min-h-[44px] !py-1.5 !px-4 !text-[0.86rem]"
+        >
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="md:hidden">
+      <button
+        type="button"
+        id="open-mobile-nav"
+        aria-haspopup="dialog"
+        aria-controls="mobile-nav-dialog"
+        class="gel-btn gel-btn-pearl !min-h-[44px] !py-1.5 !px-3.5 !text-[0.86rem]"
+      >
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          class="w-4 h-4 stroke-current fill-none"
+          stroke-width="2.2"
+          stroke-linecap="round"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+        <span>Menu</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<dialog
+  id="mobile-nav-dialog"
+  closedby="any"
+  aria-labelledby="mobile-nav-title"
+  class="aero-dialog"
+>
+  <div class="window-titlebar px-4 py-3 flex items-center justify-between rounded-t-[15px]">
+    <h2 id="mobile-nav-title" class="font-extrabold text-[#091E36] text-base">
+      Menu
+    </h2>
+    <form method="dialog">
+      <button
+        type="submit"
+        class="gel-btn gel-btn-pearl !min-h-[44px] !py-1.5 !px-3.5 !text-sm"
+      >
+        Tutup
+      </button>
+    </form>
+  </div>
+
+  <div class="p-4 space-y-2 bg-gradient-to-b from-white to-[#F0F8FF] rounded-b-[15px]">
+    <ul class="space-y-2" role="list">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              data-mobile-nav-link
+              class="flex items-center justify-between min-h-[48px] px-4 rounded-xl font-bold text-[#091E36] bg-white border border-[#7CC2F2] hover:bg-[#E6F4FE] transition-colors"
+            >
+              <span>{item.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="pt-2">
+      <a
+        href={PROFILE.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full gel-btn gel-btn-cobalt"
+      >
+        GitHub @{PROFILE.handle}
+      </a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const openBtn = document.getElementById('open-mobile-nav');
+  const mobileDialog = document.getElementById('mobile-nav-dialog') as HTMLDialogElement | null;
+
+  if (openBtn && mobileDialog) {
+    openBtn.addEventListener('click', () => {
+      mobileDialog.showModal();
+    });
+
+    mobileDialog.querySelectorAll('[data-mobile-nav-link]').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileDialog.close();
+      });
+    });
+
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      mobileDialog.addEventListener('click', (event) => {
+        if (event.target !== mobileDialog) return;
+        const rect = mobileDialog.getBoundingClientRect();
+        const inside =
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width;
+        if (!inside) mobileDialog.close();
+      });
+    }
+  }
+</script>

@@ -1,0 +1,659 @@
+---
+import { AI_PROJECTS } from '../data/portfolio';
+
+const featuredProjects = AI_PROJECTS.filter((project) => project.featured);
+const visionProjects = AI_PROJECTS.filter((project) => !project.featured);
+---
+
+<section id="karya" class="py-12 sm:py-18">
+  <div class="max-w-5xl mx-auto px-5 space-y-8 sm:space-y-10">
+    <div class="space-y-2 max-w-2xl">
+      <h2 class="heading-section">Karya AI Pilihan</h2>
+      <p class="prose-aero">
+        Empat repositori rekayasa agen otonom, protokol inferensi lokal, dan visi komputer biometrik.
+      </p>
+    </div>
+
+    <div class="space-y-6 sm:space-y-8">
+      {
+        featuredProjects.map((project, index) => {
+          const reverseDesktop = index % 2 === 1;
+          return (
+            <article class="acrylic-plate p-5 sm:p-7">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+                <div
+                  class:list={[
+                    'lg:col-span-6',
+                    reverseDesktop ? 'lg:order-1' : 'lg:order-2',
+                  ]}
+                >
+                  <div class="art-stage p-3 sm:p-4 overflow-hidden">
+                    {project.id === 'bludai' && (
+                      <svg
+                        viewBox="0 0 480 280"
+                        fill="none"
+                        role="img"
+                        aria-label="Ilustrasi topologi multi-agen Bludai dengan Supervisor, 9Router, dan agen pekerja"
+                        class="w-full h-auto block"
+                      >
+                        <defs>
+                          <radialGradient id="bludaiOrbCobalt" cx="32%" cy="26%" r="68%">
+                            <stop offset="0%" stop-color="#FFFFFF" />
+                            <stop offset="28%" stop-color="#7DD3FC" />
+                            <stop offset="72%" stop-color="#0284C7" />
+                            <stop offset="100%" stop-color="#035388" />
+                          </radialGradient>
+                          <radialGradient id="bludaiOrbEco" cx="32%" cy="26%" r="68%">
+                            <stop offset="0%" stop-color="#FFFFFF" />
+                            <stop offset="30%" stop-color="#86EFAC" />
+                            <stop offset="75%" stop-color="#16A34A" />
+                            <stop offset="100%" stop-color="#116932" />
+                          </radialGradient>
+                          <linearGradient id="bludaiSilk" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.25" />
+                            <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.85" />
+                            <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.3" />
+                          </linearGradient>
+                        </defs>
+
+                        <path
+                          d="M24 156 C 140 96, 340 206, 456 132 L 456 210 C 330 250, 150 156, 24 208 Z"
+                          fill="url(#bludaiSilk)"
+                        />
+
+                        <path
+                          d="M240 104 C 240 144, 116 140, 116 184"
+                          stroke="#0284C7"
+                          stroke-width="2.5"
+                        />
+                        <path
+                          d="M240 104 L 240 184"
+                          stroke="#15803D"
+                          stroke-width="2.5"
+                        />
+                        <path
+                          d="M240 104 C 240 144, 364 140, 364 184"
+                          stroke="#0284C7"
+                          stroke-width="2.5"
+                        />
+                        <path
+                          d="M116 196 Q 240 158 364 196"
+                          stroke="#FFFFFF"
+                          stroke-width="2"
+                          stroke-dasharray="5 4"
+                        />
+
+                        <rect
+                          x="176"
+                          y="20"
+                          width="128"
+                          height="26"
+                          rx="13"
+                          fill="#FFFFFF"
+                          stroke="#59A5DC"
+                        />
+                        <text
+                          x="240"
+                          y="37"
+                          text-anchor="middle"
+                          fill="#091E36"
+                          font-size="11.5"
+                          font-weight="700"
+                          font-family="JetBrains Mono, monospace"
+                        >
+                          Supervisor
+                        </text>
+
+                        <circle cx="240" cy="84" r="28" fill="url(#bludaiOrbCobalt)" stroke="#FFFFFF" stroke-width="2" />
+                        <ellipse cx="231" cy="73" rx="11" ry="6" fill="#FFFFFF" fill-opacity="0.72" />
+
+                        <circle cx="116" cy="196" r="21" fill="url(#bludaiOrbCobalt)" stroke="#FFFFFF" stroke-width="2" />
+                        <ellipse cx="109" cy="188" rx="8" ry="4.5" fill="#FFFFFF" fill-opacity="0.7" />
+
+                        <circle cx="240" cy="196" r="23" fill="url(#bludaiOrbEco)" stroke="#FFFFFF" stroke-width="2" />
+                        <ellipse cx="232" cy="187" rx="9" ry="5" fill="#FFFFFF" fill-opacity="0.72" />
+
+                        <circle cx="364" cy="196" r="21" fill="url(#bludaiOrbCobalt)" stroke="#FFFFFF" stroke-width="2" />
+                        <ellipse cx="357" cy="188" rx="8" ry="4.5" fill="#FFFFFF" fill-opacity="0.7" />
+
+                        <rect x="60" y="230" width="112" height="26" rx="8" fill="#FFFFFF" stroke="#59A5DC" />
+                        <text
+                          x="116"
+                          y="247"
+                          text-anchor="middle"
+                          fill="#091E36"
+                          font-size="11"
+                          font-weight="700"
+                          font-family="JetBrains Mono, monospace"
+                        >
+                          CLI &amp; Web UI
+                        </text>
+
+                        <rect x="186" y="230" width="108" height="26" rx="8" fill="#FFFFFF" stroke="#15803D" />
+                        <text
+                          x="240"
+                          y="247"
+                          text-anchor="middle"
+                          fill="#116932"
+                          font-size="11"
+                          font-weight="700"
+                          font-family="JetBrains Mono, monospace"
+                        >
+                          9Router
+                        </text>
+
+                        <rect x="308" y="230" width="112" height="26" rx="8" fill="#FFFFFF" stroke="#59A5DC" />
+                        <text
+                          x="364"
+                          y="247"
+                          text-anchor="middle"
+                          fill="#091E36"
+                          font-size="11"
+                          font-weight="700"
+                          font-family="JetBrains Mono, monospace"
+                        >
+                          Agent Evals
+                        </text>
+                      </svg>
+                    )}
+
+                    {project.id === 'ag-mcp-local-llm' && (
+                      <svg
+                        viewBox="0 0 480 280"
+                        fill="none"
+                        role="img"
+                        aria-label="Ilustrasi jembatan protokol MCP dari editor kode ke Ollama GPU lokal"
+                        class="w-full h-auto block"
+                      >
+                        <defs>
+                          <linearGradient id="mcpGlassCard" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFFFFF" />
+                            <stop offset="100%" stop-color="#E6F4FE" />
+                          </linearGradient>
+                          <radialGradient id="mcpGpuOrb" cx="30%" cy="26%" r="70%">
+                            <stop offset="0%" stop-color="#FFFFFF" />
+                            <stop offset="32%" stop-color="#86EFAC" />
+                            <stop offset="74%" stop-color="#15803D" />
+                            <stop offset="100%" stop-color="#0F5326" />
+                          </radialGradient>
+                          <radialGradient id="mcpLens" cx="35%" cy="28%" r="68%">
+                            <stop offset="0%" stop-color="#FFFFFF" />
+                            <stop offset="38%" stop-color="#BAE6FD" />
+                            <stop offset="100%" stop-color="#0284C7" />
+                          </radialGradient>
+                        </defs>
+
+                        <circle cx="372" cy="132" r="68" stroke="#FFFFFF" stroke-opacity="0.7" stroke-width="1.6" />
+                        <circle cx="372" cy="132" r="50" stroke="#7CC2F2" stroke-opacity="0.65" stroke-width="1.4" />
+
+                        <path
+                          d="M164 118 C 206 96, 274 96, 326 118"
+                          stroke="#0284C7"
+                          stroke-width="3"
+                        />
+                        <path
+                          d="M164 146 C 206 168, 274 168, 326 146"
+                          stroke="#15803D"
+                          stroke-width="3"
+                        />
+
+                        <rect
+                          x="44"
+                          y="80"
+                          width="122"
+                          height="104"
+                          rx="14"
+                          fill="url(#mcpGlassCard)"
+                          stroke="#59A5DC"
+                          stroke-width="1.5"
+                        />
+                        <rect x="58" y="96" width="56" height="8" rx="4" fill="#0284C7" />
+                        <rect x="58" y="112" width="92" height="6" rx="3" fill="#93C5FD" />
+                        <rect x="58" y="124" width="78" height="6" rx="3" fill="#BAE6FD" />
+                        <text
+                          x="105"
+                          y="160"
+                          text-anchor="middle"
+                          fill="#091E36"
+                          font-size="11.5"
+                          font-weight="700"
+                          font-family="Plus Jakarta Sans, sans-serif"
+                        >
+                          IDE Client
+                        </text>
+
+                        <circle cx="244" cy="132" r="24" fill="url(#mcpLens)" stroke="#FFFFFF" stroke-width="2" />
+                        <text
+                          x="244"
+                          y="136"
+                          text-anchor="middle"
+                          fill="#FFFFFF"
+                          font-size="10.5"
+                          font-weight="800"
+                          font-family="JetBrains Mono, monospace"
+                        >
+                          MCP
+                        </text>
+
+                        <circle cx="372" cy="132" r="36" fill="url(#mcpGpuOrb)" stroke="#FFFFFF" stroke-width="2.2" />
+                        <ellipse cx="360" cy="118" rx="13" ry="7" fill="#FFFFFF" fill-opacity="0.72" />
+
+                        <rect x="188" y="216" width="112" height="26" rx="8" fill="#FFFFFF" stroke="#59A5DC" />
+                        <text
+                          x="244"
+                          y="233"
+                          text-anchor="middle"
+                          fill="#091E36"
+                          font-size="11"
+                          font-weight="700"
+                          font-family="JetBrains Mono, monospace"
+                        >
+                          httpx Async
+                        </text>
+
+                        <rect x="314" y="216" width="116" height="26" rx="8" fill="#FFFFFF" stroke="#15803D" />
+                        <text
+                          x="372"
+                          y="233"
+                          text-anchor="middle"
+                          fill="#116932"
+                          font-size="11"
+                          font-weight="700"
+                          font-family="JetBrains Mono, monospace"
+                        >
+                          Ollama GPU
+                        </text>
+                      </svg>
+                    )}
+                  </div>
+                </div>
+
+                <div
+                  class:list={[
+                    'lg:col-span-6 space-y-4',
+                    reverseDesktop ? 'lg:order-2' : 'lg:order-1',
+                  ]}
+                >
+                  <div class="space-y-1.5">
+                    <p class="font-mono-spec text-xs font-bold text-[#035388]">
+                      {project.category}
+                    </p>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-[#091E36] tracking-tight">
+                      {project.name}
+                    </h3>
+                  </div>
+
+                  <p class="prose-aero">
+                    {project.summary}
+                  </p>
+
+                  <ul class="space-y-1.5 text-sm font-medium text-[#091E36]">
+                    {project.highlights.map((item) => (
+                      <li class="flex items-start gap-2.5">
+                        <span
+                          aria-hidden="true"
+                          class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0284C7] shrink-0"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="flex flex-wrap gap-1.5 pt-0.5">
+                    {project.stack.map((tech) => (
+                      <span class="spec-chip">{tech}</span>
+                    ))}
+                  </div>
+
+                  <div class="flex flex-wrap items-center gap-3 pt-2">
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="gel-btn gel-btn-cobalt"
+                    >
+                      <span>Kode Sumber</span>
+                    </a>
+                    <button
+                      type="button"
+                      data-open-project={project.id}
+                      aria-haspopup="dialog"
+                      aria-controls="blueprint-dialog"
+                      class="gel-btn gel-btn-pearl"
+                    >
+                      <span>Catatan Arsitektur</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          visionProjects.map((project) => (
+            <article class="acrylic-plate p-5 sm:p-6 flex flex-col gap-4">
+              <div class="art-stage p-3 overflow-hidden">
+                {project.id === 'mata-mata' && (
+                  <svg
+                    viewBox="0 0 480 250"
+                    fill="none"
+                    role="img"
+                    aria-label="Ilustrasi biometrik iris mata ArcFace dan batas sudut Cosine Similarity"
+                    class="w-full h-auto block"
+                  >
+                    <defs>
+                      <radialGradient id="irisOuter" cx="36%" cy="30%" r="68%">
+                        <stop offset="0%" stop-color="#E0F2FE" />
+                        <stop offset="42%" stop-color="#38BDF8" />
+                        <stop offset="78%" stop-color="#0284C7" />
+                        <stop offset="100%" stop-color="#091E36" />
+                      </radialGradient>
+                      <radialGradient id="irisInner" cx="40%" cy="35%" r="65%">
+                        <stop offset="0%" stop-color="#86EFAC" stop-opacity="0.85" />
+                        <stop offset="100%" stop-color="#0284C7" stop-opacity="0" />
+                      </radialGradient>
+                    </defs>
+
+                    <circle cx="240" cy="112" r="82" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF" fill-opacity="0.45" />
+                    <circle cx="240" cy="112" r="64" fill="url(#irisOuter)" stroke="#FFFFFF" stroke-width="2.2" />
+                    <circle cx="240" cy="112" r="46" fill="url(#irisInner)" />
+                    <circle cx="240" cy="112" r="22" fill="#091E36" />
+                    <ellipse cx="222" cy="92" rx="16" ry="9" transform="rotate(-24 222 92)" fill="#FFFFFF" fill-opacity="0.82" />
+                    <circle cx="252" cy="122" r="5" fill="#FFFFFF" fill-opacity="0.65" />
+
+                    <path d="M240 112 L 314 74" stroke="#FFFFFF" stroke-width="2" />
+                    <path d="M240 112 L 318 128" stroke="#86EFAC" stroke-width="2" />
+                    <path d="M288 87 A 54 54 0 0 1 292 122" stroke="#FFFFFF" stroke-width="2" />
+
+                    <rect x="82" y="204" width="142" height="26" rx="8" fill="#FFFFFF" stroke="#59A5DC" />
+                    <text
+                      x="153"
+                      y="221"
+                      text-anchor="middle"
+                      fill="#091E36"
+                      font-size="11"
+                      font-weight="700"
+                      font-family="JetBrains Mono, monospace"
+                    >
+                      ArcFace Margin
+                    </text>
+
+                    <rect x="256" y="204" width="142" height="26" rx="8" fill="#FFFFFF" stroke="#15803D" />
+                    <text
+                      x="327"
+                      y="221"
+                      text-anchor="middle"
+                      fill="#116932"
+                      font-size="11"
+                      font-weight="700"
+                      font-family="JetBrains Mono, monospace"
+                    >
+                      Cosine Reject
+                    </text>
+                  </svg>
+                )}
+
+                {project.id === 'face-recog' && (
+                  <svg
+                    viewBox="0 0 480 250"
+                    fill="none"
+                    role="img"
+                    aria-label="Ilustrasi lensa kamera WebRTC dan ekstraksi vektor embedding wajah"
+                    class="w-full h-auto block"
+                  >
+                    <defs>
+                      <radialGradient id="camLens" cx="34%" cy="28%" r="68%">
+                        <stop offset="0%" stop-color="#FFFFFF" />
+                        <stop offset="32%" stop-color="#7DD3FC" />
+                        <stop offset="76%" stop-color="#0369A1" />
+                        <stop offset="100%" stop-color="#091E36" />
+                      </radialGradient>
+                    </defs>
+
+                    <path d="M74 62 H 94 M74 62 V 82" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M214 62 H 194 M214 62 V 82" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M74 174 H 94 M74 174 V 154" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M214 174 H 194 M214 174 V 154" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" />
+
+                    <circle cx="144" cy="118" r="44" fill="url(#camLens)" stroke="#FFFFFF" stroke-width="2.5" />
+                    <circle cx="144" cy="118" r="18" fill="#091E36" fill-opacity="0.72" />
+                    <ellipse cx="131" cy="103" rx="12" ry="6.5" transform="rotate(-22 131 103)" fill="#FFFFFF" fill-opacity="0.8" />
+
+                    <path d="M204 118 C 230 118, 240 118, 266 118" stroke="#0284C7" stroke-width="2.5" stroke-dasharray="5 4" />
+
+                    <rect x="268" y="64" width="156" height="108" rx="12" fill="#FFFFFF" stroke="#59A5DC" stroke-width="1.5" />
+                    <text
+                      x="286"
+                      y="88"
+                      fill="#091E36"
+                      font-size="11"
+                      font-weight="700"
+                      font-family="JetBrains Mono, monospace"
+                    >
+                      embeddings[512]
+                    </text>
+                    <rect x="286" y="102" width="116" height="8" rx="4" fill="#38BDF8" />
+                    <rect x="286" y="118" width="88" height="8" rx="4" fill="#22C55E" />
+                    <rect x="286" y="134" width="104" height="8" rx="4" fill="#0284C7" />
+                    <rect x="286" y="150" width="72" height="8" rx="4" fill="#7DD3FC" />
+
+                    <rect x="92" y="204" width="104" height="26" rx="8" fill="#FFFFFF" stroke="#59A5DC" />
+                    <text
+                      x="144"
+                      y="221"
+                      text-anchor="middle"
+                      fill="#091E36"
+                      font-size="11"
+                      font-weight="700"
+                      font-family="JetBrains Mono, monospace"
+                    >
+                      /register
+                    </text>
+
+                    <rect x="294" y="204" width="104" height="26" rx="8" fill="#FFFFFF" stroke="#15803D" />
+                    <text
+                      x="346"
+                      y="221"
+                      text-anchor="middle"
+                      fill="#116932"
+                      font-size="11"
+                      font-weight="700"
+                      font-family="JetBrains Mono, monospace"
+                    >
+                      /login
+                    </text>
+                  </svg>
+                )}
+              </div>
+
+              <div class="space-y-1.5">
+                <p class="font-mono-spec text-xs font-bold text-[#035388]">
+                  {project.category}
+                </p>
+                <h3 class="text-xl font-extrabold text-[#091E36] tracking-tight">
+                  {project.name}
+                </h3>
+              </div>
+
+              <p class="prose-aero">
+                {project.summary}
+              </p>
+
+              <ul class="space-y-1.5 text-sm font-medium text-[#091E36]">
+                {project.highlights.map((item) => (
+                  <li class="flex items-start gap-2.5">
+                    <span
+                      aria-hidden="true"
+                      class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0284C7] shrink-0"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="flex flex-wrap gap-1.5">
+                {project.stack.map((tech) => (
+                  <span class="spec-chip">{tech}</span>
+                ))}
+              </div>
+
+              <div class="mt-auto pt-3 flex flex-wrap items-center gap-3">
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="gel-btn gel-btn-cobalt"
+                >
+                  <span>Kode Sumber</span>
+                </a>
+                <button
+                  type="button"
+                  data-open-project={project.id}
+                  aria-haspopup="dialog"
+                  aria-controls="blueprint-dialog"
+                  class="gel-btn gel-btn-pearl"
+                >
+                  <span>Catatan Arsitektur</span>
+                </button>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<dialog
+  id="blueprint-dialog"
+  closedby="any"
+  aria-labelledby="blueprint-dialog-title"
+  class="aero-dialog"
+>
+  <div class="window-titlebar px-5 py-3 flex items-center justify-between gap-3 rounded-t-[15px]">
+    <div class="min-w-0">
+      <p id="blueprint-dialog-category" class="font-mono-spec text-[0.72rem] font-bold text-[#035388]">
+        Arsitektur Sistem
+      </p>
+      <h3 id="blueprint-dialog-title" class="font-extrabold text-[#091E36] text-lg truncate">
+        Detail Proyek
+      </h3>
+    </div>
+    <form method="dialog">
+      <button
+        type="submit"
+        class="gel-btn gel-btn-pearl !min-h-[44px] !py-1.5 !px-3.5 !text-sm"
+      >
+        Tutup
+      </button>
+    </form>
+  </div>
+
+  <div class="p-5 sm:p-6 space-y-4 bg-gradient-to-b from-white to-[#F4FAFF] rounded-b-[15px]">
+    <p id="blueprint-dialog-summary" class="prose-aero"></p>
+
+    <div class="space-y-2">
+      <h4 class="text-xs font-mono-spec font-bold uppercase tracking-wider text-[#035388]">
+        Alur Teknis
+      </h4>
+      <ul
+        id="blueprint-dialog-notes"
+        class="space-y-2 text-sm font-medium text-[#091E36]"
+      ></ul>
+    </div>
+
+    <div id="blueprint-dialog-stack" class="flex flex-wrap gap-1.5 pt-1"></div>
+
+    <div class="pt-3 border-t border-[#CBE5FA] flex flex-wrap items-center justify-end gap-3">
+      <a
+        id="blueprint-dialog-repo"
+        href="https://github.com/Hansel-vlnt"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="gel-btn gel-btn-cobalt"
+      >
+        Buka Repositori di GitHub
+      </a>
+    </div>
+  </div>
+</dialog>
+
+<script
+  type="application/json"
+  id="ai-projects-json"
+  set:html={JSON.stringify(AI_PROJECTS)}
+/>
+
+<script>
+  import type { AiProject } from '../data/portfolio';
+
+  const dataEl = document.getElementById('ai-projects-json');
+  const projects: AiProject[] = dataEl?.textContent ? JSON.parse(dataEl.textContent) : [];
+  const projectMap = new Map(projects.map((p) => [p.id, p]));
+
+  const dialog = document.getElementById('blueprint-dialog') as HTMLDialogElement | null;
+  const catEl = document.getElementById('blueprint-dialog-category');
+  const titleEl = document.getElementById('blueprint-dialog-title');
+  const summaryEl = document.getElementById('blueprint-dialog-summary');
+  const notesEl = document.getElementById('blueprint-dialog-notes');
+  const stackEl = document.getElementById('blueprint-dialog-stack');
+  const repoEl = document.getElementById('blueprint-dialog-repo') as HTMLAnchorElement | null;
+
+  document.querySelectorAll<HTMLButtonElement>('[data-open-project]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.openProject as AiProject['id'] | undefined;
+      const project = id ? projectMap.get(id) : undefined;
+      if (!project || !dialog) return;
+
+      if (catEl) catEl.textContent = project.category;
+      if (titleEl) titleEl.textContent = project.name;
+      if (summaryEl) summaryEl.textContent = project.summary;
+      if (repoEl) repoEl.href = project.repoUrl;
+
+      if (notesEl) {
+        notesEl.replaceChildren(
+          ...project.architectureNotes.map((note) => {
+            const li = document.createElement('li');
+            li.className = 'flex items-start gap-2.5';
+            const dot = document.createElement('span');
+            dot.setAttribute('aria-hidden', 'true');
+            dot.className = 'mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0284C7] shrink-0';
+            const text = document.createElement('span');
+            text.textContent = note;
+            li.append(dot, text);
+            return li;
+          })
+        );
+      }
+
+      if (stackEl) {
+        stackEl.replaceChildren(
+          ...project.stack.map((tech) => {
+            const chip = document.createElement('span');
+            chip.className = 'spec-chip';
+            chip.textContent = tech;
+            return chip;
+          })
+        );
+      }
+
+      dialog.showModal();
+    });
+  });
+
+  if (dialog && !('closedBy' in HTMLDialogElement.prototype)) {
+    dialog.addEventListener('click', (event) => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      const inside =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width;
+      if (!inside) dialog.close();
+    });
+  }
+</script>

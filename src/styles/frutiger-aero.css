@@ -1,0 +1,284 @@
+.font-mono-spec {
+  font-family: var(--font-mono);
+}
+
+.display-name {
+  font-size: clamp(2.15rem, 3.6vw + 0.9rem, 3.35rem);
+  line-height: 1.1;
+  letter-spacing: -0.028em;
+  font-weight: 800;
+  color: var(--ink-primary);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.heading-section {
+  font-size: clamp(1.5rem, 2vw + 0.75rem, 2.15rem);
+  line-height: 1.18;
+  letter-spacing: -0.022em;
+  font-weight: 800;
+  color: var(--ink-primary);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.prose-aero {
+  font-size: clamp(0.98rem, 0.25vw + 0.92rem, 1.08rem);
+  line-height: 1.62;
+  color: var(--ink-secondary);
+}
+
+/* Backdrop blur capped at 2 elements (.aero-dock-header and .aero-hero-bezel) to preserve 60fps scroll. */
+.aero-dock-header {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(238, 248, 255, 0.96) 50%,
+    rgba(222, 241, 254, 0.96) 50.5%,
+    rgba(245, 251, 255, 0.98) 100%
+  );
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid #6ab5e8;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.75),
+    0 8px 24px -12px rgba(9, 30, 54, 0.14);
+}
+
+.aero-dock-sheen {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.aero-dock-header.is-condensed .aero-dock-sheen {
+  opacity: 1;
+}
+
+/* Declare animation-timeline and animation-range after animation shorthand so neither resets. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+    @keyframes reveal-dock-sheen {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .aero-dock-sheen {
+      animation: reveal-dock-sheen auto linear both;
+      animation-timeline: scroll(block root);
+      animation-range: 0px 120px;
+    }
+  }
+}
+
+.aero-hero-bezel {
+  border-radius: 18px;
+  padding: 7px;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(186, 230, 253, 0.68) 49%,
+    rgba(125, 211, 252, 0.58) 50%,
+    rgba(220, 252, 231, 0.82) 100%
+  );
+  backdrop-filter: blur(12px) saturate(155%);
+  -webkit-backdrop-filter: blur(12px) saturate(155%);
+  border: 1px solid #5aa9e2;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    inset 0 -1px 1px rgba(3, 83, 136, 0.2),
+    0 20px 44px -18px rgba(3, 83, 136, 0.24);
+}
+
+.aero-bezel-inner {
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%);
+  border: 1px solid #8cc7ef;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+.acrylic-plate {
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f9fcff 50%,
+    #f0f8ff 50.5%,
+    #fafdff 100%
+  );
+  border: 1px solid #6ab5e8;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 12px 28px -18px rgba(3, 83, 136, 0.18);
+}
+
+.art-stage {
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 22% 18%, #ffffff 0%, rgba(255, 255, 255, 0) 48%),
+    linear-gradient(155deg, #e6f5ff 0%, #d2ecfd 58%, #dcfce7 100%);
+  border: 1px solid #7cc2f2;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.window-titlebar {
+  background: linear-gradient(
+    180deg,
+    #f4faff 0%,
+    #d7edfd 49%,
+    #c3e3fb 50%,
+    #dff1fe 100%
+  );
+  border-bottom: 1px solid #6ab5e8;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+/* Hard-stop luminance step at 50% simulates Web 2.0 curved acrylic sky/ground reflection. */
+.gel-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0.62rem 1.35rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  transition: transform 0.14s ease, filter 0.14s ease;
+}
+
+.gel-btn::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 8px;
+  right: 8px;
+  height: 40%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.46) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+.gel-btn:active {
+  transform: translateY(1.5px);
+}
+
+/* Mid-stops stay at or darker than #157a3c / #0768a6 so white text holds >= 5.4:1 contrast across its full height. */
+.gel-btn-eco {
+  color: #ffffff;
+  background: linear-gradient(
+    180deg,
+    #198744 0%,
+    #157a3c 49.5%,
+    #116932 50.5%,
+    #0e5c2b 88%,
+    #157a3c 100%
+  );
+  border: 1px solid #0b4a22;
+  text-shadow: 0 -1px 1px rgba(6, 40, 18, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 2px rgba(134, 239, 172, 0.35),
+    0 6px 16px -4px rgba(17, 105, 50, 0.4);
+}
+
+.gel-btn-eco:hover {
+  filter: brightness(1.06);
+}
+
+.gel-btn-cobalt {
+  color: #ffffff;
+  background: linear-gradient(
+    180deg,
+    #0972b5 0%,
+    #0768a6 49.5%,
+    #035388 50.5%,
+    #024470 88%,
+    #0768a6 100%
+  );
+  border: 1px solid #02385e;
+  text-shadow: 0 -1px 1px rgba(2, 34, 58, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 2px rgba(125, 211, 252, 0.35);
+}
+
+.gel-btn-cobalt:hover {
+  filter: brightness(1.06);
+}
+
+.gel-btn-pearl {
+  color: var(--ink-primary);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #eff7fe 49.5%,
+    #dfeffc 50.5%,
+    #f5faff 100%
+  );
+  border: 1px solid #2b7bb9;
+  text-shadow: 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+.gel-btn-pearl:hover {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f6fbff 49.5%,
+    #e8f4fe 50.5%,
+    #ffffff 100%
+  );
+}
+
+/* 6px radius distinguishes read-only metadata chips from 9999px action capsules. */
+.spec-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.24rem 0.58rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #075985;
+  background: linear-gradient(180deg, #f4faff 0%, #e0f2fe 100%);
+  border: 1px solid #59a5dc;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+.orb-dew {
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 29% 24%, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.45) 16%, rgba(255, 255, 255, 0) 36%),
+    radial-gradient(circle at 72% 78%, rgba(74, 222, 128, 0.58) 0%, rgba(56, 189, 248, 0.3) 42%, rgba(3, 105, 161, 0.18) 76%, rgba(3, 83, 136, 0.36) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    inset 0 2px 6px rgba(255, 255, 255, 0.95),
+    inset 0 -6px 12px rgba(14, 165, 233, 0.32),
+    0 12px 28px -8px rgba(3, 105, 161, 0.22);
+}
+
+dialog.aero-dialog {
+  margin: auto;
+  padding: 0;
+  max-width: min(38rem, calc(100vw - 1.5rem));
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid #3c8ec9;
+  background: #ffffff;
+  color: var(--ink-primary);
+  box-shadow: 0 24px 56px -12px rgba(9, 30, 54, 0.42);
+}
+
+dialog.aero-dialog::backdrop {
+  background-color: rgba(9, 30, 54, 0.56);
+}

@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import "./frutiger-aero.css";
+
+@layer base {
+  :root {
+    --ink-primary: #091e36;
+    --ink-secondary: #23415f;
+    --cobalt-deep: #035388;
+    --cobalt-mid: #0768a6;
+    --sky-border: #6ab5e8;
+    --pearl-surface: #ffffff;
+    --ice-surface: #f2f9ff;
+    --eco-deep: #116932;
+    --eco-mid: #157a3c;
+    --font-sans: 'Plus Jakarta Sans', 'Segoe UI', Frutiger, Calibri, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    color: var(--ink-primary);
+    background-color: #eaf6ff;
+    scroll-padding-top: 4rem;
+    overflow-x: clip;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: clip;
+    background:
+      radial-gradient(ellipse 90% 52% at 50% -6%, #bae6fd 0%, rgba(186, 230, 253, 0.35) 55%, transparent 80%),
+      linear-gradient(180deg, #dff2fe 0%, #f1f9ff 34%, #f7fcff 72%, #e6f6ec 100%);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--cobalt-deep);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.95);
+  }
+
+  ::selection {
+    background-color: #035388;
+    color: #ffffff;
+  }
+}

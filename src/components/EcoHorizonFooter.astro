@@ -1,0 +1,147 @@
+---
+import { PROFILE } from '../data/portfolio';
+---
+
+<footer
+  id="kontak"
+  class="relative isolate pt-10 sm:pt-14 pb-14 overflow-hidden"
+>
+  <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 -z-10">
+    <svg
+      viewBox="0 0 1440 360"
+      fill="none"
+      preserveAspectRatio="none"
+      class="w-full h-60 sm:h-72"
+    >
+      <defs>
+        <linearGradient id="ecoWaterBand" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.5" />
+          <stop offset="50%" stop-color="#0EA5E9" stop-opacity="0.6" />
+          <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.52" />
+        </linearGradient>
+        <linearGradient id="ecoMeadowBack" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#22C55E" stop-opacity="0.7" />
+          <stop offset="100%" stop-color="#15803D" stop-opacity="0.66" />
+        </linearGradient>
+        <linearGradient id="ecoMeadowFront" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.76" />
+          <stop offset="100%" stop-color="#BBF7D0" stop-opacity="0.95" />
+        </linearGradient>
+      </defs>
+
+      <path
+        d="M0 112 C 320 68, 680 158, 1080 98 C 1240 78, 1360 94, 1440 108 L 1440 360 L 0 360 Z"
+        fill="url(#ecoWaterBand)"
+      />
+      <path
+        d="M0 176 C 290 110, 620 222, 980 148 C 1190 110, 1330 132, 1440 154 L 1440 360 L 0 360 Z"
+        fill="url(#ecoMeadowBack)"
+      />
+      <path
+        d="M0 226 C 380 168, 820 250, 1440 184 L 1440 360 L 0 360 Z"
+        fill="url(#ecoMeadowFront)"
+      />
+      <path
+        d="M0 112 C 320 68, 680 158, 1080 98 C 1240 78, 1360 94, 1440 108"
+        stroke="#FFFFFF"
+        stroke-opacity="0.9"
+        stroke-width="2.2"
+      />
+      <path
+        d="M0 176 C 290 110, 620 222, 980 148 C 1190 110, 1330 132, 1440 154"
+        stroke="#FFFFFF"
+        stroke-opacity="0.88"
+        stroke-width="2"
+      />
+    </svg>
+
+    <div class="orb-dew hidden md:block absolute bottom-20 right-[8%] w-12 h-12 opacity-80"></div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-5 space-y-6">
+    <div class="acrylic-plate p-6 sm:p-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="space-y-2 max-w-xl">
+          <h2 class="heading-section">
+            Tertarik Berdiskusi atau Kolaborasi?
+          </h2>
+          <p class="prose-aero">
+            Terbuka untuk kolaborasi riset sistem multi-agen, integrasi protokol MCP lokal, dan proyek visi komputer.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 shrink-0">
+          <a
+            href={PROFILE.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gel-btn gel-btn-eco"
+          >
+            <span>GitHub @{PROFILE.handle}</span>
+          </a>
+          <button
+            type="button"
+            id="copy-profile-btn"
+            data-copy-url={PROFILE.githubUrl}
+            class="gel-btn gel-btn-pearl"
+          >
+            <span>Salin Tautan Profil</span>
+          </button>
+        </div>
+      </div>
+
+      <p
+        id="copy-profile-status"
+        hidden
+        role="status"
+        aria-live="polite"
+        class="mt-4 text-sm font-bold px-3.5 py-2 rounded-lg border bg-[#F0FDF4] border-[#15803D] text-[#0F5326]"
+      ></p>
+    </div>
+
+    <div class="acrylic-plate px-5 py-2 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-bold text-[#091E36]">
+      <p>
+        {PROFILE.fullName} · {PROFILE.institution}
+      </p>
+      <div class="flex items-center gap-4">
+        <a
+          href="#beranda"
+          class="min-h-[44px] inline-flex items-center underline underline-offset-2 text-[#035388]"
+        >
+          Kembali ke Atas
+        </a>
+        <a
+          href={PROFILE.portfolioRepoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="min-h-[44px] inline-flex items-center underline underline-offset-2 text-[#035388]"
+        >
+          portofolio-H
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const copyBtn = document.getElementById('copy-profile-btn') as HTMLButtonElement | null;
+  const statusEl = document.getElementById('copy-profile-status');
+
+  copyBtn?.addEventListener('click', async () => {
+    const url = copyBtn.dataset.copyUrl || 'https://github.com/Hansel-vlnt';
+    if (!statusEl) return;
+
+    try {
+      await navigator.clipboard.writeText(url);
+      statusEl.hidden = false;
+      statusEl.className =
+        'mt-4 text-sm font-bold px-3.5 py-2 rounded-lg border bg-[#F0FDF4] border-[#15803D] text-[#0F5326]';
+      statusEl.textContent = `Tautan ${url} berhasil disalin ke papan klip.`;
+    } catch {
+      statusEl.hidden = false;
+      statusEl.className =
+        'mt-4 text-sm font-bold px-3.5 py-2 rounded-lg border bg-[#FEF2F2] border-[#B91C1C] text-[#7F1D1D]';
+      statusEl.textContent = `Salin otomatis dibatasi peramban. Tautan profil: ${url}`;
+    }
+  });
+</script>

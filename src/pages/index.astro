@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AeroNavbar from '../components/AeroNavbar.astro';
+import HeroDaylight from '../components/HeroDaylight.astro';
+import SelectedWorks from '../components/SelectedWorks.astro';
+import TechStack from '../components/TechStack.astro';
+import EcoHorizonFooter from '../components/EcoHorizonFooter.astro';
+import { PROFILE } from '../data/portfolio';
+---
+
+<Layout
+  title={`${PROFILE.fullName} · ${PROFILE.role}`}
+  description="Portofolio AI Engineer Hansel Valent Evanthe (UNIMED): Sistem Multi-Agen LangGraph, MCP Local LLM via Ollama, dan Visi Komputer Biometrik."
+>
+  <AeroNavbar />
+
+  <main id="konten-utama">
+    <HeroDaylight />
+    <SelectedWorks />
+    <TechStack />
+  </main>
+
+  <EcoHorizonFooter />
+</Layout>
